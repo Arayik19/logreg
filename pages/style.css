@@ -1,0 +1,41 @@
+.wrapper{
+    display:flex;
+    justify-content: center;
+    height: 500px;
+    width: 20%;
+    background-color: dodgerblue;
+    margin: 100px 35% 100px;
+    border-radius: 10px;
+}
+.input{
+    margin: 10px;
+    float:right;
+    height: 60px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: white;
+}
+
+button{
+    width: 180px;
+    height: 60px;
+    margin: 6px;
+}
+
+#aref{
+    width: 180px;
+    height: 60px;
+
+}
+#refbutton{
+    margin-top: 380px;
+}
+
+#error{
+    height: 100px;
+    width: 500px;
+    margin: 50px 32% 0px;
+    border-radius: 5px;
+    font-size: 30px;
+    text-align: center;
+}

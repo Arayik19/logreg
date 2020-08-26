@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <form onsubmit="ref.on('value', logIn, errData)" method="GET" id="loginForm">
+      <input type="text" placeholder="Username/Email" id="createdLogin" class="input" required><br>
+      <input type="text" placeholder="Password" id="createdPass" class="input" required><br>
+      <button type="submit">Sign in</button>      
+    </form>
+    <button id="refbutton"><a href="./register.html" id="aref">REGISTER</a></button>
+  </div>
+
+
+  <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyDHL1gxl8AtjxgCVc4GP9U_uHIzyx7Hy48",
+      authDomain: "account-9c719.firebaseapp.com",
+      databaseURL: "https://account-9c719.firebaseio.com",
+      projectId: "account-9c719",
+      storageBucket: "account-9c719.appspot.com",
+      messagingSenderId: "988694173155",
+      appId: "1:988694173155:web:9ccb8896961ce0a9e5fcd6"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="../script.js"></script>
+</body>
+
+</html>
