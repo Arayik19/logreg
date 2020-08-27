@@ -5,11 +5,6 @@ const ref = database.ref('users');
 const errorElement = document.getElementById('error');
 const emailValidationVar = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const form = document.getElementById("registerForm");
-const dataObject = {
-    name: "",
-    email: "",
-    password: "",
-};
 
 class Login {
     constructor(name, pass) {
@@ -18,10 +13,9 @@ class Login {
     }
 }
 class Register extends Login {
-    constructor(name, pass, email, cpass) {
+    constructor(name, pass, email) {
         super(name, pass);
         this.email = email;
-        this.cpass = cpass;
     }
 }
 
@@ -30,8 +24,7 @@ const login = new Login(document.querySelector('#name'),
 
 const register = new Register(document.querySelector('#name'),
     document.querySelector('#pass'),
-    document.querySelector('#email'),
-    document.querySelector('#repass'));
+    document.querySelector('#email'));
 //==============================
 
 function formValidate(data) {
@@ -49,35 +42,34 @@ function formValidate(data) {
         messages.push('Incorrect email format')
     }
     const users = Object.values(Object.assign([], data.val()));
-    console.log(users);
     const index = users.findIndex(x => (x.name === register.name.value || x.email === register.email.value))
     if (index !== -1) {
         messages.push('Email or Username already exists!')
     }
-    if (register.cpass.value !== register.pass.value) {
+    if (document.getElementById("repass").value !== register.pass.value) {
         messages.push('Passwords must match!')
     }
     if (messages.length > 0) {
         errorElement.innerText = messages.join(', ')
         errorElement.style.backgroundColor = "#fb8989";
     } else {
-        createAccount()
+        createAccount()        
         location.replace("login.html")
     }
 }
 
 function createAccount() {
-    dataObject.name = register.name.value;
-    dataObject.email = register.email.value;
-    dataObject.password = register.pass.value;
-    ref.push(dataObject);
+    register.name = register.name.value;
+    register.pass = register.pass.value;
+    register.email = register.email.value;    
+    ref.push(register);
     alert("Congratulations, you have created an account!");
 }
 
 function logIn(data) {
-    const users = Object.values(data.val());
+    const users = Object.values(Object.assign([], data.val()));
     const index = users.findIndex(x => (x.name === login.name.value || x.email === login.name.value)
-        && x.password === login.pass.value);
+        && x.pass === login.pass.value);
     if (index !== -1) {
         alert("You are now Signed In!")
     }
